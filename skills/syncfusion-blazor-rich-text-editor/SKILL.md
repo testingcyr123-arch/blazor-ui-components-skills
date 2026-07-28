@@ -186,7 +186,7 @@ builder.Services.AddSyncfusionBlazor();
 ### Properties
 📄 **Read:** [references/properties.md](references/properties.md)
 - Content & value: `Value`, `Placeholder`, `Readonly`, `Enabled`, `MaxLength`, `ShowCharCount`
-- Editor behaviour: `EditorMode`, `EnterKey`, `ShiftEnterKey`, `EnableTabKey`, `EnableAutoUrl`, `EnableMarkdownAutoFormat`, `EnableClipboardCleanup`, `EnableXhtml`, `EnableHtmlEncode`, `EnableResize`
+- Editor behaviour: `EditorMode`, `EnterKey`, `ShiftEnterKey`, `EnableTabKey`, `EnableAutoUrl`, `EnableMarkdownAutoFormat`, `EnableClipboardCleanup`, `EnableXhtml`, `EnableHtmlEncode`, `EnableResize`, `EnableChunkMessages`
 - Appearance & layout: `Height`, `Width`, `CssClass`, `ShowTooltip`, `FloatingToolbarOffset`
 - Security & sanitization: `EnableHtmlSanitizer`, `AdditionalSanitizeAttributes`, `AdditionalSanitizeTags`, `DeniedSanitizeSelectors`
 - Keyboard & shortcuts: `KeyConfigure` with full `ShortcutKeys` default bindings table

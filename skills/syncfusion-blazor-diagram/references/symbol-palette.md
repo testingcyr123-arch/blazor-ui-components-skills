@@ -3,6 +3,7 @@
 ## Table of Contents
 - [Overview](#overview)
 - [Setup](#setup)
+- [Drag Preview Size](#drag-preview-size)
 - [Adding Nodes to Palette](#adding-nodes-to-palette)
 - [Adding Connectors to Palette](#adding-connectors-to-palette)
 - [Multiple Palette Groups](#multiple-palette-groups)
@@ -34,6 +35,7 @@ Add the `SfSymbolPaletteComponent` alongside the diagram. Requires the `Syncfusi
                                   SymbolWidth="60"
                                   SymbolHeight="60"
                                   Palettes="@palettes"
+                                  SymbolDragPreviewSize="@symbolDragPreviewSize"
                                   SymbolMargin="@symbolMargin">
         </SfSymbolPaletteComponent>
     </div>
@@ -45,19 +47,53 @@ Add the `SfSymbolPaletteComponent` alongside the diagram. Requires the `Syncfusi
 @code {
     SfSymbolPaletteComponent _palette;
     SfDiagramComponent _diagram;
+    private DiagramSize symbolDragPreviewSize;
     DiagramObjectCollection<Palette> palettes = new();
     SymbolMargin symbolMargin = new SymbolMargin { Left = 15, Right = 15, Top = 15, Bottom = 15 };
 }
 ```
 
 ---
-
+## Drag Preview Size
+Control the size of the ghost element rendered while dragging a symbol onto the diagram canvas using `SymbolDragPreviewSize` on `SfSymbolPaletteComponent`. Set it in `OnInitialized` before the palette renders.
+```razor
+<SfSymbolPaletteComponent @ref="_palette"
+                           Height="600px"
+                           Width="200px"
+                           SymbolWidth="60"
+                           SymbolHeight="60"
+                           Palettes="@palettes"
+                           SymbolDragPreviewSize="@symbolDragPreviewSize"
+                           SymbolMargin="@symbolMargin">
+</SfSymbolPaletteComponent>
+@code {
+    private DiagramSize symbolDragPreviewSize;
+    protected override void OnInitialized()
+    {
+        symbolDragPreviewSize = new DiagramSize();
+        symbolDragPreviewSize.Width = 160;
+        symbolDragPreviewSize.Height = 160;
+    }
+}
+```
+### Sizing guidance
+| Symbol type | Recommended size |
+|---|---|
+| Basic / flow shapes | `Width = 100, Height = 100` |
+| UML classifier nodes (class, interface, enum) | `Width = 200, Height = 100` |
+| Connector / relationship symbols | `Width = 150, Height = 60` |
+| BPMN shapes | `Width = 100, Height = 100` |
+> If `SymbolDragPreviewSize` is omitted, the drag ghost falls back to a small default that may clip complex symbols (e.g. UML classifiers) during drag.
+---
 ## Adding Nodes to Palette
 
 ```razor
 @code {
     protected override void OnInitialized()
     {
+        symbolDragPreviewSize = new DiagramSize();
+        symbolDragPreviewSize.Width = 160;
+        symbolDragPreviewSize.Height = 160;
         var flowShapes = new DiagramObjectCollection<NodeBase>();
 
         flowShapes.Add(new Node
@@ -188,8 +224,6 @@ Override how symbols look in the palette using `SymbolInfo`:
             Description = new SymbolDescription
             {
                 Text = (symbol as Node)?.ID ?? "",
-                Overflow = SymbolTextOverflow.Clip,
-                Wrap = SymbolLabelWrap.WrapWithOverflow
             }
         };
     }

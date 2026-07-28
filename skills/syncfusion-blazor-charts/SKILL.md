@@ -194,6 +194,7 @@ Topics covered:
 - Data label visibility and formatting
 - Label positioning strategies
 - Data label templates
+- Displaying series labels for series identification
 - Last data label highlighting
 - Chart annotations (text, shapes, images)
 - Gradient color fills
@@ -652,6 +653,7 @@ Here's a minimal example to create a column chart with data:
   - `Visible` - Show/hide labels
   - `Position` - Label position
   - `Template` - Custom label template
+- `SeriesLabelSettings` - Series label visibility, text, overlap handling, and styling
 - `ChartLegendSettings` - Legend configuration
   - `Visible` - Show/hide legend
   - `Position` - Legend position (see LegendPosition enum)

@@ -37,6 +37,7 @@
 - [Step Area Chart](#step-area-chart)
    - [Description](#description)
    - [Basic Implementation](#basic-implementation)
+   - [Step Area Without Risers](step-area-without-risers)
 - [When to Use Each Type](#when-to-use-each-type)
 - [Empty Point Handling](#empty-point-handling)
 - [Common Series Properties](#common-series-properties)
@@ -534,6 +535,29 @@ Step area charts combine stepped lines with filled areas below. Shows discrete c
                      XName="Category" 
                      YName="Value" 
                      Type="Syncfusion.Blazor.Charts.ChartSeriesType.StepArea">
+        </ChartSeries>
+    </ChartSeriesCollection>
+</SfChart>
+```
+
+### Step Area Without Risers
+
+Use the `ShowRisers` property to control whether vertical riser lines are displayed between consecutive data points in a step area series. Set this property to `false` to hide the riser lines and simplify the chart appearance.
+
+```razor
+<SfChart Title="England - Run Rate">
+    <ChartPrimaryXAxis Title="Overs"></ChartPrimaryXAxis>
+    <ChartPrimaryYAxis Title="Runs"></ChartPrimaryYAxis>
+    <ChartTooltipSettings Enable="true"></ChartTooltipSettings>
+
+    <ChartSeriesCollection>
+        <ChartSeries DataSource="@ChartData"
+                     XName="X"
+                     YName="Y"
+                     Type="Syncfusion.Blazor.Charts.ChartSeriesType.StepArea"
+                     Opacity="0.1"
+                     ShowRisers="false">
+            <ChartSeriesBorder Width="1.5"></ChartSeriesBorder>
         </ChartSeries>
     </ChartSeriesCollection>
 </SfChart>

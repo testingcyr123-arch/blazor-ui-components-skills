@@ -120,6 +120,7 @@ Configure via `RichTextEditorQuickToolbarSettings.Image`:
 |---|---|
 | `ImageToolbarCommand.Replace` | Swap image with another |
 | `ImageToolbarCommand.Align` | Align image left / centre / right |
+| `ImageToolbarCommand.WrapText` |  Wraps text around the image right / left |
 | `ImageToolbarCommand.Caption` | Wrap image in figure/caption |
 | `ImageToolbarCommand.Remove` | Delete image from content |
 | `ImageToolbarCommand.OpenImageLink` | Follow attached hyperlink |

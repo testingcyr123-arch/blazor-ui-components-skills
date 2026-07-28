@@ -27,6 +27,7 @@ Aggregation determines how numeric values are summarized in Pivot Table cells. B
 | `Product` | Product of all values |
 | `Index` | Cell index relative to grand total |
 | `RunningTotals` | Cumulative running total |
+| `PercentageOfRunningTotals` | Cumulative percentage of running totals (client-side engine only) |
 | `PopulationStDev` | Population standard deviation |
 | `SampleStDev` | Sample standard deviation |
 | `PopulationVar` | Population variance |

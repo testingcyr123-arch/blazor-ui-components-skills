@@ -14,6 +14,13 @@
    - [Text Mapping](#text-mapping)
    - [Label Templates](#label-templates)
    - [Label Margins and Styling](#label-margins-and-styling)
+- [Series Labels](#series-labels)
+   - [Basic Series Labels](#basic-series-labels)
+   - [Custom Label Text](#custom-label-text)
+   - [Label Styling](#label-styling)
+   - [Managing Label Overlap](#managing-label-overlap)
+   - [Multiple Series Labels](#multiple-series-labels)
+   - [Supported Chart Types](#supported-chart-types)
 - [Annotations](#annotations)
    - [Adding Annotations](#adding-annotations)
    - [Annotation Regions](#annotation-regions)
@@ -25,6 +32,7 @@
 - [Visual Styling Best Practices](#visual-styling-best-practices)
    - [Marker Usage Guidelines](#marker-usage-guidelines)
    - [Data Label Best Practices](#data-label-best-practices)
+   - [Series Label Best Practices](#series-label-best-practices)
    - [Annotation Guidelines](#annotation-guidelines)
    - [Gradient Recommendations](#gradient-recommendations)
    - [Performance Considerations](#performance-considerations)
@@ -301,6 +309,166 @@ Customize label appearance with margins, borders, and fonts:
     </ChartMarker>
 </ChartSeries>
 ```
+---
+
+## Series Labels
+
+Series labels display the series name directly on the chart area, making it easier to identify individual series without relying solely on the legend.
+
+### Basic Series Labels
+
+Enable series labels using the `SeriesLabelSettings` component:
+
+```razor
+<SfChart>
+    <ChartPrimaryXAxis ValueType="Syncfusion.Blazor.Charts.ValueType.Category" />
+
+    <ChartSeriesCollection>
+        <ChartSeries DataSource="@SalesData"
+                     XName="Month"
+                     YName="Sales"
+                     Name="Revenue"
+                     Type="Syncfusion.Blazor.Charts.ChartSeriesType.Line">
+            <SeriesLabelSettings Visible="true" />
+        </ChartSeries>
+    </ChartSeriesCollection>
+</SfChart>
+
+@code {
+    public class SalesInfo
+    {
+        public string Month { get; set; } = string.Empty;
+        public double Sales { get; set; }
+    }
+
+    public List<SalesInfo> SalesData = new()
+    {
+        new SalesInfo { Month = "Jan", Sales = 35 },
+        new SalesInfo { Month = "Feb", Sales = 28 },
+        new SalesInfo { Month = "Mar", Sales = 42 },
+        new SalesInfo { Month = "Apr", Sales = 38 }
+    };
+}
+```
+
+### Custom Label Text
+
+Specify custom text using the `Text` property:
+
+```razor
+<SeriesLabelSettings Visible="true"
+                     Text="Annual Revenue" />
+```
+
+**Text Behavior:**
+
+- `Text="Annual Revenue"` - Displays custom label text.
+- `Text=null` or empty - Uses the associated `ChartSeries.Name`.
+- Supports any valid string value.
+
+### Label Styling
+
+Customize series label appearance with background, opacity, borders, and fonts:
+
+```razor
+<SeriesLabelSettings Visible="true"
+                     Background="#E8F5E9"
+                     Opacity="0.8">
+    <SeriesLabelFont Size="16px"
+                     Color="#2E7D32"
+                     FontFamily="Arial"
+                     FontWeight="bold" />
+    <SeriesLabelBorder Width="2" Color="#2E7D32" />
+</SeriesLabelSettings>
+```
+
+**Complete Label Styling Example:**
+
+Customize series label appearance using text, font, border, background, and opacity settings.
+
+```razor
+<ChartSeries DataSource="@ChartData"
+             XName="X"
+             YName="Y"
+             Name="Revenue"
+             Type="Syncfusion.Blazor.Charts.ChartSeriesType.Line">
+    <SeriesLabelSettings Visible="true"
+                         Text="Revenue Growth"
+                         Background="#FFF4E6"
+                         Opacity="0.9">
+        <SeriesLabelFont Size="14px"
+                         Color="#D84315"
+                         FontWeight="bold"
+                         FontFamily="Arial" />
+        <SeriesLabelBorder Width="2"
+                           Color="#FF6F00" />
+    </SeriesLabelSettings>
+</ChartSeries>
+```
+
+### Managing Label Overlap
+
+Control whether overlapping series labels are allowed using the `ShowOverlapText` property.
+
+```razor
+<SeriesLabelSettings Visible="true"
+                     ShowOverlapText="false" />
+```
+
+**Overlap Behavior:**
+
+- `false` - Attempts to position the label without overlapping other series labels, data labels, markers, error bars, and series paths where applicable.
+- `true` - Allows the label to render using fallback placement when a non-overlapping position cannot be found.
+
+### Multiple Series Labels
+
+Enable labels for multiple series to identify each series directly within the chart.
+
+```razor
+<SfChart>
+    <ChartPrimaryXAxis ValueType="Syncfusion.Blazor.Charts.ValueType.Category" />
+
+    <ChartSeriesCollection>
+
+        <ChartSeries DataSource="@Series1Data"
+                     XName="X"
+                     YName="Y"
+                     Name="Revenue"
+                     Type="Syncfusion.Blazor.Charts.ChartSeriesType.Line">
+            <SeriesLabelSettings Visible="true" />
+        </ChartSeries>
+
+        <ChartSeries DataSource="@Series2Data"
+                     XName="X"
+                     YName="Y"
+                     Name="Expenses"
+                     Type="Syncfusion.Blazor.Charts.ChartSeriesType.Line">
+            <SeriesLabelSettings Visible="true" />
+        </ChartSeries>
+
+        <ChartSeries DataSource="@Series3Data"
+                     XName="X"
+                     YName="Y"
+                     Name="Profit"
+                     Type="Syncfusion.Blazor.Charts.ChartSeriesType.Line">
+            <SeriesLabelSettings Visible="true" />
+        </ChartSeries>
+
+    </ChartSeriesCollection>
+</SfChart>
+```
+
+### Supported Chart Types
+
+Series labels support automatic placement across the following chart types:
+
+- `Line`
+- `Area`
+- `Column`
+- `Bar`
+- `Scatter`
+- `Polar Line`
+- `Radar Line`
 
 ---
 
@@ -562,6 +730,16 @@ Create radial gradients for pie and doughnut charts:
 2. **Format consistently** across all series (same decimal places, units)
 3. **Use templates** for complex information display
 4. **Position labels outside** for dense data sets
+
+### Series Label Best Practices
+
+1. **Use series labels as a legend alternative** when immediate series identification is required.
+2. **Keep label text concise** for better readability.
+3. **Use custom backgrounds and borders** on charts with complex visuals.
+4. **Avoid excessive overlap** when displaying many series.
+5. **Apply consistent styling** across all series labels.
+6. **Use high-contrast colors** to improve accessibility.
+7. **Enable series labels only for important series** to reduce visual clutter.
 
 ### Annotation Guidelines
 

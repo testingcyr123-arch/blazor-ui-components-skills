@@ -904,12 +904,12 @@ Console.WriteLine($"Reconnected: {oldNode} → {newNode}  (port: {newPort})");
 
 ---
 
-### TextChanged
+### TextChanging / TextChanged
 
-Fires after inline text editing completes:
+Fires during and after inline text edit:
 
 ```razor
-<SfDiagramComponent TextChanged="OnTextChanged" />
+<SfDiagramComponent TextChanged="OnTextChanged" TextChanging="OnTextChanging"/>
 
 @code {
     private void OnTextChanged(TextChangeEventArgs args)
@@ -935,6 +935,11 @@ Fires after inline text editing completes:
             Console.WriteLine($"  From '{args.OldValue}' to '{args.NewValue}'");
             Console.WriteLine($"  Source: {connector.SourceID}, Target: {connector.TargetID}");
         }
+    }
+    private void OnTextChanging(TextChangeEventArgs args)
+    {
+        Console.WriteLine("OldValue", args.OldValue);
+        Console.WriteLine("NewValue", args.NewValue);
     }
 }
 ```

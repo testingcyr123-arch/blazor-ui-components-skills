@@ -134,6 +134,9 @@ Use this skill when you need to:
 - Inline editing of annotations
 - Multiple annotations per element
 - Annotation interaction events
+- Interaction constraints: `AnnotationConstraints` flags, `DragLimit` (PathAnnotation)
+- Hyperlinks with `Hyperlink` (`Url`, `Content`, `OpenMode`)
+- Events: SelectionChanging/Changed, PositionChanging/Changed, SizeChanging/Changed, RotationChanging/Changed, TextChanging/Changed
 
 ### Ports
 📄 **Read:** [references/ports.md](references/ports.md)
@@ -303,6 +306,17 @@ nodes.Add(new Node
 - Message types (synchronous, asynchronous, return, create, destroy)
 - UML interaction shapes and connectors
 - `await UpdateFromModelAsync()` — refresh diagram after programmatic model changes
+
+### UML Class Diagram
+📄 **Read:** [references/uml-class-diagram.md](references/uml-class-diagram.md)
+- Creating Class, Interface, and Enumeration nodes with attributes, methods, and members
+- Visibility scopes, method parameters, separator rows
+- Styling header, section headers (`UmlSectionHeaderSettings`), and row-level `TextStyle`
+- Six relationship types: Association, Aggregation, Composition, Inheritance, Dependency, Realization
+- Directional / bi-directional association flow; multiplicity labels
+- Adding and removing members at runtime (`Add`, `RemoveAt`, `Remove`)
+- `CollectionChanging` / `CollectionChanged` events; inline text editing (`F2`, `StartTextEdit`)
+- Symbol Palette integration for drag-and-drop UML shapes
 
 ### Collaborative Editing
 📄 **Read:** [references/collaborative-editing.md](references/collaborative-editing.md)
@@ -613,6 +627,27 @@ nodes.Add(new Node
 >
 > // ✅ Correct — set only the sides you need
 > new DiagramThickness { Top = 50 }
+> ```
+
+#### PathAnnotation DragLimit Type
+
+> **⚠️ `PathAnnotation.DragLimit` type is `DiagramThickness` — NOT `Margin`.**  
+> Using `new Margin { ... }` causes a type mismatch compile error (`CS0029`).  
+> Always use `new DiagramThickness { ... }` for `DragLimit`:
+> ```csharp
+> // ❌ Wrong — CS0029: Margin cannot be assigned to DiagramThickness
+> new PathAnnotation
+> {
+>     Constraints = AnnotationConstraints.Interaction,
+>     DragLimit   = new Margin { Left = 40, Right = 40, Top = 20, Bottom = 20 }
+> }
+>
+> // ✅ Correct — DiagramThickness with object initializer
+> new PathAnnotation
+> {
+>     Constraints = AnnotationConstraints.Interaction,
+>     DragLimit   = new DiagramThickness { Left = 40, Right = 40, Top = 20, Bottom = 20 }
+> }
 > ```
 
 #### ScrollSettings EnableAutoScroll Property

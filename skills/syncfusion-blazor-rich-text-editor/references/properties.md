@@ -114,6 +114,14 @@ Displays source code in HTML-encoded format (applies to HTML mode only).
 ### `EnableResize` — `bool` — default: `false`
 Enables a resize handle on the editor content area.
 
+### `EnableChunkMessages` — `bool` — default: `false`
+When `true`, splits large HTML content into smaller chunks and processes them sequentially to stay within the SignalR `MaximumReceiveMessageSize` limit (32 KB default).
+
+```razor
+<SfRichTextEditor EnableChunkMessages="true">
+</SfRichTextEditor>
+```
+
 ---
 
 ## Child Component Settings
@@ -379,4 +387,5 @@ Idle time in milliseconds after typing stops before a new undo checkpoint is cre
 | 36 | `ValueChanged` | `EventCallback<string?>` | — |
 | 37 | `ValueExpression` | `Expression<Func<string?>>?` | — |
 | 38 | `Width` | `string` | `"100%"` |
+| 39 | `EnableChunkMessages` | `bool` | `false` |
 ````
