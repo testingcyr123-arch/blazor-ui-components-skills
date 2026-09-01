@@ -22,7 +22,7 @@ The events should be provided to the Scheduler using **ScheduleEvents** tag. Whe
 - [Destroyed](#destroyed)
 - [Dragged](#dragged)
 - [EventRendered](#eventrendered)
-- [MoreEventsClicked](#moreeventstclicked)
+- [MoreEventsClicked](#moreeventsclicked)
 - [Navigating](#navigating)
 - [OnActionBegin](#onactionbegin)
 - [OnActionFailure](#onactionfailure)
@@ -284,6 +284,14 @@ The request type that can be checked within the [`OnActionBegin`](https://help.s
 | `ResourceExpand` | Triggers while expanding resource on timeline views.|
 | `ViewNavigate` | Triggers while collapsing resource on timeline views.|
 
+For CRUD actions, use the corresponding record collection from `ActionEventArgs<T>`:
+
+| ActionType | Record collection | Description |
+|------|-------------|-------------|
+| `EventCreate` | `AddedRecords` | Contains newly added appointments. |
+| `EventChange` | `ChangedRecords` | Contains modified appointments. |
+| `EventRemove` | `DeletedRecords` | Contains deleted appointments. |
+
 ```cshtml
 @using Syncfusion.Blazor.Schedule
 
@@ -294,9 +302,20 @@ The request type that can be checked within the [`OnActionBegin`](https://help.s
 @code{
     public void OnActionBegin(ActionEventArgs<AppointmentData> args)
     {
-        if (args.ActionType == ActionType.EventRemove)   //To check for request type is event delete
+        if (args.ActionType == ActionType.EventCreate)
         {
-            args.Cancel = true;   //To prevent the appointment deletion
+            AppointmentData addedAppointment = args.AddedRecords[0];
+            Console.WriteLine($"Added: {addedAppointment.Subject}");
+        }
+        else if (args.ActionType == ActionType.EventChange)
+        {
+            AppointmentData changedAppointment = args.ChangedRecords[0];
+            Console.WriteLine($"Changed: {changedAppointment.Subject}");
+        }
+        else if (args.ActionType == ActionType.EventRemove)
+        {
+            AppointmentData deletedAppointment = args.DeletedRecords[0];
+            Console.WriteLine($"Deleted: {deletedAppointment.Subject}");
         }
     }
 }

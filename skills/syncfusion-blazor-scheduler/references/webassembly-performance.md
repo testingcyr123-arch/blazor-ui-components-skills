@@ -4,7 +4,6 @@
 
 1. [Avoid Unnecessary Component Renders](#avoid-unnecessary-component-renders)
 2. [Avoid Unnecessary Component Renders After Scheduler Events](#avoid-unnecessary-component-renders-after-scheduler-events)
-3. [Performance Guidelines](#performance-guidelines)
 
 ## Overview
 

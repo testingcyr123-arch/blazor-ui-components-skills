@@ -17,7 +17,7 @@ Automatically expand cells to fit content:
 ```cshtml
 @using Syncfusion.Blazor.Schedule
 
-<SfSchedule TValue="AppointmentData" Height="550px" RowAutoHeight="true" @bind-SelectedDate="@CurrentDate">
+<SfSchedule TValue="AppointmentData" Height="550px" EnableAutoRowHeight="true" @bind-SelectedDate="@CurrentDate">
     <ScheduleEventSettings DataSource="@DataSource"></ScheduleEventSettings>
     <ScheduleViews>
         <ScheduleView Option="View.Week"></ScheduleView>
@@ -49,7 +49,7 @@ Expand month cells for many events:
 ```cshtml
 @using Syncfusion.Blazor.Schedule
 
-<SfSchedule TValue="AppointmentData" Height="550px" RowAutoHeight="true" @bind-SelectedDate="@CurrentDate">
+<SfSchedule TValue="AppointmentData" Height="550px" EnableAutoRowHeight="true" @bind-SelectedDate="@CurrentDate">
     <ScheduleEventSettings DataSource="@DataSource"></ScheduleEventSettings>
     <ScheduleViews>
         <ScheduleView Option="View.Month"></ScheduleView>
@@ -83,7 +83,7 @@ Fixed cell heights:
 ```cshtml
 @using Syncfusion.Blazor.Schedule
 
-<SfSchedule TValue="AppointmentData" Height="550px" RowAutoHeight="false" @bind-SelectedDate="@CurrentDate">
+<SfSchedule TValue="AppointmentData" Height="550px" EnableAutoRowHeight="false" @bind-SelectedDate="@CurrentDate">
     <ScheduleEventSettings DataSource="@DataSource"></ScheduleEventSettings>
     <ScheduleViews>
         <ScheduleView Option="View.Month"></ScheduleView>
@@ -111,7 +111,7 @@ Handle long appointment text:
 ```cshtml
 @using Syncfusion.Blazor.Schedule
 
-<SfSchedule TValue="AppointmentData" Height="550px" RowAutoHeight="true" @bind-SelectedDate="@CurrentDate">
+<SfSchedule TValue="AppointmentData" Height="550px" EnableAutoRowHeight="true" @bind-SelectedDate="@CurrentDate">
     <ScheduleEventSettings DataSource="@DataSource">
         <ScheduleField Subject="Subject" Description="Description"></ScheduleField>
     </ScheduleEventSettings>
@@ -152,7 +152,7 @@ Manage performance with many events:
 ```cshtml
 @using Syncfusion.Blazor.Schedule
 
-<SfSchedule TValue="AppointmentData" Height="550px" RowAutoHeight="true" @bind-SelectedDate="@CurrentDate">
+<SfSchedule TValue="AppointmentData" Height="550px" EnableAutoRowHeight="true" @bind-SelectedDate="@CurrentDate">
     <ScheduleEventSettings DataSource="@DataSource"></ScheduleEventSettings>
     <ScheduleViews>
         <ScheduleView Option="View.Month"></ScheduleView>
@@ -193,7 +193,7 @@ Manage performance with many events:
 
 ## Row Height Calculation
 
-Row height automatically adjusts when RowAutoHeight="true":
+Row height automatically adjusts when EnableAutoRowHeight="true":
 
 ```cshtml
 <style>
@@ -222,7 +222,7 @@ Optimize performance:
 ```cshtml
 @using Syncfusion.Blazor.Schedule
 
-<SfSchedule TValue="AppointmentData" Height="550px" RowAutoHeight="true" AllowVirtualScroll="true" @bind-SelectedDate="@CurrentDate">
+<SfSchedule TValue="AppointmentData" Height="550px" EnableAutoRowHeight="true" AllowVirtualScroll="true" @bind-SelectedDate="@CurrentDate">
     <ScheduleEventSettings DataSource="@DataSource"></ScheduleEventSettings>
     <ScheduleViews>
         <ScheduleView Option="View.Month"></ScheduleView>
@@ -245,7 +245,7 @@ Optimize performance:
 
 ## Notes
 
-- RowAutoHeight="true" expands cells for content
+- EnableAutoRowHeight="true" expands cells for content
 - Useful for month view with many events
 - Improves readability of busy schedules
 - Automatic height calculation

@@ -4,7 +4,6 @@ description: Implement Syncfusion Blazor Scheduler component for comprehensive a
 metadata:
   author: "Syncfusion Inc"
   version: "34.1.29"
-  category: "Scheduler Components"
 ---
 
 # Syncfusion Blazor Scheduler Component
@@ -66,6 +65,9 @@ The Syncfusion Blazor Scheduler is a comprehensive calendar component that allow
 - Normal, spanned, all-day, and blocked events
 - Read-only appointments and slot availability
 - Overlapping event customization and prevention (AllowOverlap)
+
+### Appointment Appearance and Management
+📄 **Read:** [references/appointment-appearance.md](references/appointment-appearance.md)
 - Appointment appearance with EventRendered styling
 - Tooltips (built-in, custom templates, conditional)
 - Appointment selection and retrieval (GetEventsAsync, GetCurrentViewEvents)
@@ -79,6 +81,7 @@ The Syncfusion Blazor Scheduler is a comprehensive calendar component that allow
 - CssClass property for bulk styling
 - Custom attributes and classes
 - Event appearance modifications
+- Tooltip customization with templates
 
 ### Drag and Drop
 📄 **Read:** [references/appointment-drag-and-drop.md](references/appointment-drag-and-drop.md)
@@ -102,7 +105,7 @@ The Syncfusion Blazor Scheduler is a comprehensive calendar component that allow
 📄 **Read:** [references/views.md](references/views.md)
 - 12 available view modes (Day, Week, WorkWeek, Month, Agenda, MonthAgenda, TimelineDay, TimelineWeek, TimelineWorkWeek, TimelineMonth, TimelineYear, Year)
 - Setting current/active view with @bind-CurrentView property
-- View-specific configuration properties table
+- View configuration properties table
 - ScheduleView component properties (Option, IsSelected, DateFormat, Readonly, ShowWeekend, WorkDays, etc.)
 - Day view with hourly time slots and single-day display
 - Day view with Interval property for multiple consecutive days (2-day, 3-day views)
@@ -122,6 +125,11 @@ The Syncfusion Blazor Scheduler is a comprehensive calendar component that allow
 - Timeline Month view showing entire month horizontally
 - Timeline Year view showing full year horizontally with Orientation customization
 - Year view displaying mini-calendar with month selection and appointment indicators
+
+### View Configuration and Customization
+📄 **Read:** [references/view-configuration-and-customization.md](references/view-configuration-and-customization.md)
+- View-specific configuration properties table
+- Limit concurrent appointment labels with MaxEventStack in Day, Week, and WorkWeek views
 - Extending view intervals with Interval property (3-day, 2-week, quarterly, annual views)
 - Display Name customization for extended views with DisplayName property
 - Setting specific start and end hours with StartHour/EndHour (e.g., "09:00"-"18:00")
@@ -178,10 +186,9 @@ The Syncfusion Blazor Scheduler is a comprehensive calendar component that allow
 
 ### Customization and Styling
 📄 **Read:** [references/scheduler-styling.md](references/scheduler-styling.md)
-- CSS customization and theming
+- CSS customization
 - Custom styling with CssClass
 - Style overrides for components
-- Color schemes and themes
 - Responsive design adjustments
 
 ### Cell Customization
@@ -251,11 +258,18 @@ The Syncfusion Blazor Scheduler is a comprehensive calendar component that allow
 - Creating completely custom editor using EditorTemplate
 - Customizing editor header and footer with EditorHeaderTemplate/EditorFooterTemplate
 - Adding resource dropdown options to editor template
+
+### Editor Advanced Customization
+📄 **Read:** [references/editor-advanced-customization.md](references/editor-advanced-customization.md)
 - Adding recurrence pattern fields to editor template
 - Applying DataAnnotations validation in editor templates
 - Quick info popups on single-click (cell and event)
 - Customizing quick popup appearance with ScheduleQuickInfoTemplates
 - Quick popup template types (Cell, Event, Both) for different popup scenarios
+
+### Quick Popup and Validation
+📄 **Read:** [references/quick-popup-and-validation.md](references/quick-popup-and-validation.md)
+- Quick popup customization combinations
 - Custom header, content, footer for quick popups
 - Disabling quick popups with ShowQuickInfo or OnPopupOpen event
 - Multiple cell selection and QuickInfoOnSelectionEnd property
@@ -270,6 +284,7 @@ The Syncfusion Blazor Scheduler is a comprehensive calendar component that allow
 - Copy event data to clipboard
 - Paste handling and validation
 - Multi-appointment operations
+- Keyboard navigation shortcuts
 
 ### Resources and Grouping
 📄 **Read:** [references/resources.md](references/resources.md)
@@ -283,6 +298,9 @@ The Syncfusion Blazor Scheduler is a comprehensive calendar component that allow
 - Multiple resources without visual grouping (AllowMultiple property)
 - Single-level resource grouping with ScheduleGroup
 - Multi-level hierarchical resource grouping (GroupIDField)
+
+### Resource Grouping and Customization
+📄 **Read:** [references/resource-grouping-and-customization.md](references/resource-grouping-and-customization.md)
 - One-to-One grouping with ByGroupID="false"
 - Grouping resources by date (ByDate="true") in calendar views
 - Shared events across resources (AllowGroupEdit="true")
@@ -376,6 +394,9 @@ The Syncfusion Blazor Scheduler is a comprehensive calendar component that allow
 - ExcelExport API for cell formatting, headers, styles
 - ICS calendar export to .ics format (Outlook, Google Calendar compatible)
 - ICS export with custom filename
+
+### ICS Import and Printing
+📄 **Read:** [references/ics-import-and-printing.md](references/ics-import-and-printing.md)
 - Importing events from external ICS files with ImportICalendarAsync
 - File uploader integration for importing ICS files
 - Merging imported events with existing appointments
@@ -402,12 +423,6 @@ The Syncfusion Blazor Scheduler is a comprehensive calendar component that allow
 📄 **Read:** [references/webassembly-performance.md](references/webassembly-performance.md)
 - Avoid unnecessary component renders using `@key` directive
 - Use PreventRender to reduce re-renders after scheduler events
-
-### Accessibility
-📄 **Read:** [references/accessibility.md](references/accessibility.md)
-- WCAG 2.2 Level A & AA compliance
-- WAI-ARIA attributes and roles
-- Keyboard navigation shortcuts
 
 ---
 

@@ -1,14 +1,11 @@
-# Styling and Theming
+# Styling
 
 ## Table of Contents
 - [CSS Class Property](#css-class-property)
-- [Built-in Themes](#built-in-themes)
 - [Appointment Styling](#appointment-styling)
 - [Dynamic Styling with EventRendered](#dynamic-styling-with-eventrendered)
-- [Cell Styling](#cell-styling)
 - [Header Styling](#header-styling)
 - [Resource Coloring](#resource-coloring)
-- [Theme Options](#theme-options)
 - [Common CSS Classes](#common-css-classes)
 - [Notes](#notes)
 
@@ -31,34 +28,6 @@ Apply CSS classes to scheduler:
         background-color: #f5f5f5;
     }
 </style>
-
-@code{
-    DateTime CurrentDate = new DateTime(2026, 3, 24);
-    List<AppointmentData> DataSource = new List<AppointmentData>();
-    
-    public class AppointmentData
-    {
-        public int Id { get; set; }
-        public string Subject { get; set; }
-        public DateTime StartTime { get; set; }
-        public DateTime EndTime { get; set; }
-    }
-}
-```
-
-## Built-in Themes
-
-Apply predefined themes:
-
-```cshtml
-@using Syncfusion.Blazor.Schedule
-
-<SfSchedule TValue="AppointmentData" Height="550px" Theme="Material" @bind-SelectedDate="@CurrentDate">
-    <ScheduleEventSettings DataSource="@DataSource"></ScheduleEventSettings>
-    <ScheduleViews>
-        <ScheduleView Option="View.Week"></ScheduleView>
-    </ScheduleViews>
-</SfSchedule>
 
 @code{
     DateTime CurrentDate = new DateTime(2026, 3, 24);
@@ -161,47 +130,6 @@ Apply styles conditionally:
 }
 ```
 
-## Cell Styling
-
-Style time slots:
-
-```cshtml
-@using Syncfusion.Blazor.Schedule
-
-<SfSchedule TValue="AppointmentData" Height="550px" @bind-SelectedDate="@CurrentDate">
-    <ScheduleEvents TValue="AppointmentData" CellRendering="OnCellRender"></ScheduleEvents>
-    <ScheduleEventSettings DataSource="@DataSource"></ScheduleEventSettings>
-    <ScheduleViews>
-        <ScheduleView Option="View.Week"></ScheduleView>
-    </ScheduleViews>
-</SfSchedule>
-
-<style>
-    .weekend-cell { background-color: #f0f0f0; }
-</style>
-
-@code{
-    DateTime CurrentDate = new DateTime(2026, 3, 24);
-    List<AppointmentData> DataSource = new List<AppointmentData>();
-    
-    private async Task OnCellRender(CellRenderingEventArgs args)
-    {
-        if (args.Date.DayOfWeek == DayOfWeek.Saturday || args.Date.DayOfWeek == DayOfWeek.Sunday)
-        {
-            args.Attributes = new Dictionary<string, object> { { "class", "weekend-cell" } };
-        }
-    }
-    
-    public class AppointmentData
-    {
-        public int Id { get; set; }
-        public string Subject { get; set; }
-        public DateTime StartTime { get; set; }
-        public DateTime EndTime { get; set; }
-    }
-}
-```
-
 ## Header Styling
 
 Style scheduler header:
@@ -288,16 +216,6 @@ Color appointments by resource:
 }
 ```
 
-## Theme Options
-
-| Theme | Description |
-|-------|-------------|
-| Material | Google Material Design |
-| Bootstrap | Bootstrap styling |
-| Bootstrap4 | Bootstrap 4 styling |
-| Office-365 | Office 365 design |
-| HighContrast | High contrast accessibility |
-
 ## Common CSS Classes
 
 | Class | Target |
@@ -313,6 +231,3 @@ Color appointments by resource:
 - CssClass property applies to scheduler container
 - Use !important for custom appointment styles
 - EventRendered fires for each appointment
-- CellRendering fires for each time cell
-- Theme property overrides CSS classes
-- Built-in themes require CSS in index.html

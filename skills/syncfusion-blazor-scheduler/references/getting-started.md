@@ -182,3 +182,4 @@ Each Scheduler view can be customized with its own options:
 @code {
     DateTime CurrentDate = new DateTime(2020, 2, 13);
 }
+```

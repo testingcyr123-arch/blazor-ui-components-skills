@@ -5,7 +5,7 @@
 - [Set Custom Hours](#set-custom-hours)
 - [Style Working Hours](#style-working-hours)
 - [Working Hours with Events](#working-hours-with-events)
-- [Hide Non-Working Hours](#hide-non-working-hours)
+- [Highlight Working Hours](#highlight-working-hours)
 - [Working Hours Configuration](#working-hours-configuration)
 - [Format Notes](#format-notes)
 
@@ -18,7 +18,7 @@ Set scheduler working hours range:
 
 <SfSchedule TValue="AppointmentData" Height="550px" @bind-SelectedDate="@CurrentDate">
     <ScheduleEventSettings DataSource="@DataSource"></ScheduleEventSettings>
-    <ScheduleWorkHours StartHour="09:00" EndHour="18:00"></ScheduleWorkHours>
+    <ScheduleWorkHours Start="09:00" End="18:00"></ScheduleWorkHours>
     <ScheduleViews>
         <ScheduleView Option="View.Week"></ScheduleView>
     </ScheduleViews>
@@ -47,7 +47,7 @@ Define custom work schedule:
 
 <SfSchedule TValue="AppointmentData" Height="550px" @bind-SelectedDate="@CurrentDate">
     <ScheduleEventSettings DataSource="@DataSource"></ScheduleEventSettings>
-    <ScheduleWorkHours StartHour="08:30" EndHour="17:30"></ScheduleWorkHours>
+    <ScheduleWorkHours Start="08:30" End="17:30"></ScheduleWorkHours>
     <ScheduleTimeScale Interval="30" SlotCount="2"></ScheduleTimeScale>
     <ScheduleViews>
         <ScheduleView Option="View.Day"></ScheduleView>
@@ -81,17 +81,17 @@ Customize working hours appearance:
 
 <SfSchedule TValue="AppointmentData" Height="550px" CssClass="work-hours-styled" @bind-SelectedDate="@CurrentDate">
     <ScheduleEventSettings DataSource="@DataSource"></ScheduleEventSettings>
-    <ScheduleWorkHours StartHour="09:00" EndHour="18:00"></ScheduleWorkHours>
+    <ScheduleWorkHours Start="09:00" End="18:00"></ScheduleWorkHours>
     <ScheduleViews>
         <ScheduleView Option="View.Week"></ScheduleView>
     </ScheduleViews>
 </SfSchedule>
 
 <style>
-    .work-hours-styled .e-work-hours {
+    .work-hours-styled .e-work-cells.e-work-hours {
         background-color: #f0f8ff;
     }
-    .work-hours-styled .e-non-work-hours {
+    .work-hours-styled .e-work-cells:not(.e-work-hours) {
         background-color: #f5f5f5;
     }
 </style>
@@ -119,7 +119,7 @@ Schedule events within working hours:
 
 <SfSchedule TValue="AppointmentData" Height="550px" @bind-SelectedDate="@CurrentDate">
     <ScheduleEventSettings DataSource="@DataSource"></ScheduleEventSettings>
-    <ScheduleWorkHours StartHour="09:00" EndHour="18:00"></ScheduleWorkHours>
+    <ScheduleWorkHours Start="09:00" End="18:00"></ScheduleWorkHours>
     <ScheduleViews>
         <ScheduleView Option="View.Week"></ScheduleView>
     </ScheduleViews>
@@ -144,16 +144,16 @@ Schedule events within working hours:
 }
 ```
 
-## Hide Non-Working Hours
+## Highlight Working Hours
 
-Show only working hours:
+Enable the Highlight option to highlight the working hours.
 
 ```cshtml
 @using Syncfusion.Blazor.Schedule
 
 <SfSchedule TValue="AppointmentData" Height="550px" @bind-SelectedDate="@CurrentDate">
     <ScheduleEventSettings DataSource="@DataSource"></ScheduleEventSettings>
-    <ScheduleWorkHours StartHour="09:00" EndHour="18:00" Highlight="true"></ScheduleWorkHours>
+    <ScheduleWorkHours Start="09:00" End="18:00" Highlight="true"></ScheduleWorkHours>
     <ScheduleViews>
         <ScheduleView Option="View.Day"></ScheduleView>
     </ScheduleViews>
@@ -173,17 +173,19 @@ Show only working hours:
 }
 ```
 
+The `Highlight` option only controls whether the configured working hours are visually highlighted.
+
 ## Working Hours Configuration
 
 | Property | Value | Description |
 |----------|-------|-------------|
-| StartHour | HH:mm | Work day start (24hr format) |
-| EndHour | HH:mm | Work day end (24hr format) |
+| Start | HH:mm | Work day start (24hr format) |
+| End | HH:mm | Work day end (24hr format) |
 | Highlight | true/false | Highlight working hours |
 
 ## Format Notes
 
-- StartHour/EndHour use 24-hour format (00:00-23:59)
+- Start/End use 24-hour format (00:00-23:59)
 - Non-working hours show grayed out
 - Events can extend outside working hours
 - Working hours display differs by view type
