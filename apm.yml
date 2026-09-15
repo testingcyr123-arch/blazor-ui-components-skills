@@ -20,10 +20,6 @@ keywords:
 
 license: Syncfusion Inc
 
-dependencies:
-  apm: []
-  mcp: []
-
 includes: auto
 
 scripts: {}
