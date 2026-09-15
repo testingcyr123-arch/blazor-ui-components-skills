@@ -1,4 +1,4 @@
-name: syncfusion-blazor-ui-components-skills
+name: blazor-ui-components-skills
 version: 1.0.0
 description: AI-ready skill collection for Syncfusion Blazor UI components that bundles 60+ per-component SKILL.md guides
   (DataGrid, Scheduler, Charts, RichTextEditor, Gantt, Diagram, etc.). Use this package when an
@@ -16,4 +16,3 @@ keywords:
   - rich-text-editor
   - gantt
 license: Syncfusion Inc
-includes: auto
